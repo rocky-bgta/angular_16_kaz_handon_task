@@ -1,0 +1,18 @@
+<div>
+
+
+    <div class="form-group">
+      <label for="parentTextBox">Section One Input Text</label>
+      <input type="text"
+             class="form-control" id="parentTextBox"
+             placeholder="Parent text box"
+             [(ngModel)]="message" >
+      <button type="button" (click)="onClickParentComponentButton()" class="btn btn-primary">Update Message</button>
+    </div>
+
+
+
+  <app-block-one [receiveMessage]="passMessageToChild" (myEvent)="receiveChildEvent($event)"></app-block-one>
+  <app-block-two [receiveMessage]="passMessageToChild" (myEvent)="receiveChildEvent($event)"></app-block-two>
+
+</div>
