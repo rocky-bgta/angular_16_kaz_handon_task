@@ -1,24 +1,25 @@
 import {Component, OnInit} from '@angular/core';
-import {SharedService} from "../../dependencies/shared.service";
+import {SharedDataService} from "../../dependencies/shared.service";
+
 
 @Component({
   selector: 'app-block-one',
   templateUrl: './block-one.component.html',
   styleUrls: ['./block-one.component.css']
 })
-export class BlockOneComponent implements OnInit {
+export class BlockOneComponent {
   inputMessage: string = '';
 
-  constructor(private sharedService: SharedService) {
-
+  constructor(private sharedService: SharedDataService) {
+    this.sharedService.currentData.subscribe(updatedData => {
+      this.inputMessage = updatedData;
+    });
   }
 
-  ngOnInit(): void {
-    this.inputMessage = this.sharedService.getMessage();
-  }
+
 
 
   onClickUpdateMessage() {
-    this.sharedService.updateMessage(this.inputMessage);
+    this.sharedService.updateData(this.inputMessage);
   }
 }

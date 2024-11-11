@@ -1,23 +1,18 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // Ensures the service is a singleton and available application-wide
 })
-export class SharedService {
+export class SharedDataService {
+  // Initial data
+  private dataSource = new BehaviorSubject<string>('Initial Data');
+  currentData = this.dataSource.asObservable();
 
-  sharedData = {
-    firstBlock: 'John',
-    secondBlock: 'John',
+  constructor() {}
+
+  // Method to update the data
+  updateData(newData: string) {
+    this.dataSource.next(newData);
   }
-
-  blockInputText: string = '';
-
-  updateMessage(inputText: string) {
-    this.blockInputText = inputText;
-  }
-
-  getMessage(): string {
-    return this.blockInputText;
-  }
-
 }

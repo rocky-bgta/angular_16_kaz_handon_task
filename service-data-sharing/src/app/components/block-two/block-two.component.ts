@@ -1,29 +1,26 @@
-import {Component, DoCheck, OnInit} from '@angular/core';
-import {SharedService} from "../../dependencies/shared.service";
+import {Component} from '@angular/core';
+import {SharedDataService} from "../../dependencies/shared.service";
 
 @Component({
   selector: 'app-block-two',
   templateUrl: './block-two.component.html',
   styleUrls: ['./block-two.component.css']
 })
-export class BlockTwoComponent implements OnInit, DoCheck {
+export class BlockTwoComponent {
   inputMessage: string = '';
 
-  constructor(private sharedService: SharedService) {
-
-  }
-
-  ngOnInit(): void {
-    this.inputMessage = this.sharedService.getMessage();
+  constructor(private sharedService: SharedDataService) {
+    // Subscribe to the currentData observable to get updates
+    this.sharedService.currentData.subscribe(updatedData => {
+      this.inputMessage = updatedData;
+    });
   }
 
 
   onClickUpdateMessage() {
-    this.sharedService.updateMessage(this.inputMessage);
+    console.log("Input text value: " + this.inputMessage);
+    this.sharedService.updateData(this.inputMessage);
   }
 
-  ngDoCheck() {
-    this.inputMessage = this.sharedService.getMessage();
-    console.log("DO CHECK FROM SECOND BLOCK")
-  }
+
 }
