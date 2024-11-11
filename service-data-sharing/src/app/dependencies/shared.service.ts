@@ -10,7 +10,7 @@ export class SharedService {
     secondBlock: 'John',
   }
 
-  blockInputText: string = 'Data from shared service';
+  blockInputText: string = '';
 
   updateMessage(inputText: string) {
     this.blockInputText = inputText;

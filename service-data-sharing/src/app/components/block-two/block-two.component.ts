@@ -1,4 +1,4 @@
-import {Component, DoCheck, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, DoCheck, OnInit} from '@angular/core';
 import {SharedService} from "../../dependencies/shared.service";
 
 @Component({
@@ -6,15 +6,11 @@ import {SharedService} from "../../dependencies/shared.service";
   templateUrl: './block-two.component.html',
   styleUrls: ['./block-two.component.css']
 })
-export class BlockTwoComponent implements OnInit, OnChanges, DoCheck {
+export class BlockTwoComponent implements OnInit, DoCheck {
   inputMessage: string = '';
 
   constructor(private sharedService: SharedService) {
 
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-  //  this.inputMessage = this.sharedService.getMessage()
   }
 
   ngOnInit(): void {
@@ -26,8 +22,8 @@ export class BlockTwoComponent implements OnInit, OnChanges, DoCheck {
     this.sharedService.updateMessage(this.inputMessage);
   }
 
-  ngDoCheck(){
+  ngDoCheck() {
     this.inputMessage = this.sharedService.getMessage();
-    console.log("DO CHECK")
+    console.log("DO CHECK FROM SECOND BLOCK")
   }
 }
