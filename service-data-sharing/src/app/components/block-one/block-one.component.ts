@@ -21,4 +21,8 @@ export class BlockOneComponent implements OnInit {
   onClickUpdateMessage() {
     this.sharedService.updateMessage(this.inputMessage);
   }
+
+  onClickGetMessage() {
+    this.inputMessage = this.sharedService.getMessage();
+  }
 }

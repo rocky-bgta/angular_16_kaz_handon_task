@@ -9,22 +9,17 @@ import {SharedService} from "../../dependencies/shared.service";
 export class BlockTwoComponent implements OnInit {
   inputMessage: string = '';
 
-  constructor(private sharedService: SharedService) {
-
-  }
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.inputMessage = this.sharedService.getMessage();
   }
 
-
-
   onClickUpdateMessage() {
     this.sharedService.updateMessage(this.inputMessage);
   }
 
-/*  ngDoCheck() {
+  onClickGetMessage() {
     this.inputMessage = this.sharedService.getMessage();
-    console.log("DO CHECK FROM SECOND BLOCK")
-  }*/
+  }
 }
