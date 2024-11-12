@@ -18,6 +18,7 @@ export class BlockTwoComponent implements OnInit {
   }
 
 
+
   onClickUpdateMessage() {
     this.sharedService.updateMessage(this.inputMessage);
   }
