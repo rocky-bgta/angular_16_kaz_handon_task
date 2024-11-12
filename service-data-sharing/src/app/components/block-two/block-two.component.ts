@@ -6,7 +6,7 @@ import {SharedService} from "../../dependencies/shared.service";
   templateUrl: './block-two.component.html',
   styleUrls: ['./block-two.component.css']
 })
-export class BlockTwoComponent implements OnInit, DoCheck {
+export class BlockTwoComponent implements OnInit {
   inputMessage: string = '';
 
   constructor(private sharedService: SharedService) {
@@ -22,8 +22,8 @@ export class BlockTwoComponent implements OnInit, DoCheck {
     this.sharedService.updateMessage(this.inputMessage);
   }
 
-  ngDoCheck() {
+/*  ngDoCheck() {
     this.inputMessage = this.sharedService.getMessage();
     console.log("DO CHECK FROM SECOND BLOCK")
-  }
+  }*/
 }
